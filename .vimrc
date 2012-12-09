@@ -43,3 +43,5 @@ nmap <leader>rv :Rview<space>
 nmap <leader>rm :Rmodel<space>
 nmap <leader>rg :Rmigrate<space>
 nmap <leader>rc :Rcontroller<space>
+nmap <leader>w :w<cr>
+nmap <leader>q :q<cr>
