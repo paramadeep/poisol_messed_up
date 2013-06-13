@@ -39,9 +39,20 @@ set wildmode=full
 
 let mapleader = ","
 nmap <leader>ne :NERDTree<cr>
-nmap <leader>rv :Rview<space>
-nmap <leader>rm :Rmodel<space>
-nmap <leader>rg :Rmigrate<space>
-nmap <leader>rc :Rcontroller<space>
+nmap <leader>mv :Rview<space>
+nmap <leader>mh :Rhelper<space>
+nmap <leader>mm :Rmodel<space>
+nmap <leader>mi :Rmigration<space>
+nmap <leader>mc :Rcontroller<space>
+nmap <leader>md :Rake db:
+nmap <leader>ms :Rstylesheet<space>
+nmap <leader>mj :Rjavascript<space>
+nmap <leader>mf :Rfixture<space>
+nmap <leader>mg :Rgenerate<space>
+nmap <leader>mr :e config/routes.rb<cr>
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
+nmap <leader>e :e<space>
+nmap <leader>s :%s///g
+nmap <leader>a :Ack<space>
+nmap <leader>f gg=G:w<cr>
