@@ -56,3 +56,7 @@ nmap <leader>e :e<space>
 nmap <leader>s :%s///g
 nmap <leader>a :Ack<space>
 nmap <leader>f gg=G:w<cr>
+
+
+let Tlist_Ctags_Cmd="/usr/bin/ctags-exuberant"
+"sudo ln -sf /usr/bin/ack-grep /usr/local/bin/ack
