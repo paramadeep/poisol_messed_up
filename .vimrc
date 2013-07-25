@@ -60,3 +60,8 @@ nmap <leader>f gg=G:w<cr>
 
 let Tlist_Ctags_Cmd="/usr/bin/ctags-exuberant"
 "sudo ln -sf /usr/bin/ack-grep /usr/local/bin/ack
+
+"CtrlP
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f' 
