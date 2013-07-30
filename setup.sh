@@ -1,4 +1,6 @@
-ln -s .vim  ~/.vim
-ln -s .vimrc  ~/.vimrc
-ln -s .gitignore_global  ~/.gitignore_global
-ln -s .bash_aliases  ~/.bash_aliases
+cd ~
+ln -s work/my-vim-settings/.vim .vim
+ln -s work/my-vim-settings/.vimrc .vimrc
+ln -s work/my-vim-settings/.bash_aliases .bash_aliases
+ln -s work/my-vim-settings/.gitignore_global .gitignore_global
+
