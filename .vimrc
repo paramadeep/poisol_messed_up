@@ -54,8 +54,9 @@ nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 nmap <leader>e :e<space>
 nmap <leader>s :%s///g
-nmap <leader>a :Ack<space>
+nmap <c-f> :Ack<space>
 nmap <leader>f gg=G:w<cr>
+nmap <c-e> :MRU<cr>
 
 
 "sudo ln -sf /usr/bin/ack-grep /usr/local/bin/ack
