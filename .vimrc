@@ -30,6 +30,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 set wildmode=full
+set laststatus=2 "always display status
 
 "https://github.com/scrooloose/nerdtree
 "close the window

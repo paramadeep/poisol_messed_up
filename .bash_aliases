@@ -7,5 +7,8 @@ alias proc='ps aux|grep '
 #start service
 #/etc/init.d/<> start
 
-export PS1='${debian_chroot:+($debian_chroot)}\W\[\033[01;31m\]$ \[\033[01;37m\]'
+export PS1='${debian_chgeroot:+($debian_chroot)}\W\[\033[01;31m\]$ \[\033[01;37m\]'
 
+alias rapp='rhc app'
+alias rssh='rhc ssh'
+alias rcar='rhc cartridge'
