@@ -54,6 +54,8 @@ nmap <leader>mr :e config/routes.rb<cr>
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 nmap <leader>e :e<space>
+nmap <leader>g :!<space>git<space>
+nmap <leader>1 :!<space>
 nmap <leader>s :%s///g
 nmap <c-f> :Ack<space>
 nmap <leader>f gg=G:w<cr>

@@ -1,0 +1,7 @@
+[user]
+	email = anandhadeepak@gmail.com
+	name = deepak
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.gitignore
