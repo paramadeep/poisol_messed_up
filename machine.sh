@@ -33,3 +33,11 @@ sudo apt-get install jdownloader-installer
 #work
 mkdir work
 cd work
+
+#hibernate
+#sudo nano /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+#[Re-enable hibernate by default]
+#Identity=unix-user:*
+#Action=org.freedesktop.upower.hibernate
+#ResultActive=yes
+
