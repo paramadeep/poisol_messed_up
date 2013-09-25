@@ -5,6 +5,9 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
+set hlsearch
+set incsearch
+
 if has("autocmd")
   autocmd FileType ruby setlocal omnifunc=syntaxcomplete#Complete
   autocmd FileType ruby let g:rubycomplete_buffer_loading=1
@@ -31,6 +34,8 @@ endif
 
 set wildmode=full
 set laststatus=2 "always display status
+set number
+highlight LineNr ctermbg=black
 
 "https://github.com/scrooloose/nerdtree
 "close the window

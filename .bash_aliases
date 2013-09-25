@@ -24,3 +24,13 @@ alias gpl='git pull'
 alias gph='git push'
 alias gsh='git stash'
 alias gsa='git stash apply'
+
+
+#for pam
+alias sshreg='echo VH9zadU6 ; ssh -o GSSAPIAuthentication=no root@172.16.20.237'
+alias pamin='echo yes | cagvpn --login --username deepak --password July2011'
+alias pamout='cagvpn --logout'
+export RAILS_ENV=stub
+
+#vim
+export EDITOR=/usr/bin/vim
