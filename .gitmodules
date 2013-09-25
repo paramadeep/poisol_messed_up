@@ -28,3 +28,6 @@
 [submodule ".vim/bundle/mru.vim"]
 	path = .vim/bundle/mru.vim
 	url = https://github.com/vim-scripts/mru.vim.git
+[submodule ".vim/bundle/vim-cucumber"]
+	path = .vim/bundle/vim-cucumber
+	url = http://github.com/tpope/vim-cucumber
