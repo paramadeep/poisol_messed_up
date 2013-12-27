@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/vim-cucumber"]
 	path = .vim/bundle/vim-cucumber
 	url = http://github.com/tpope/vim-cucumber
+[submodule ".vim/bundle/vim-ruby-refactoring"]
+	path = .vim/bundle/vim-ruby-refactoring
+	url = https://github.com/ecomba/vim-ruby-refactoring

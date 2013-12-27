@@ -78,3 +78,7 @@ let g:ctrlp_user_command = 'find %s -type f'
 "git submodule init
 "git submodule update
 "git submodule foreach git pull origin master
+"
+:set spell
+hi clear SpellBad
+hi SpellBad cterm=underline
