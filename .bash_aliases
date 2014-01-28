@@ -37,3 +37,6 @@ export RAILS_ENV=stub
 #vim
 export EDITOR=/usr/bin/vim
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+#ftp
+alias ftps='python -m SimpleHTTPServer 8000'
