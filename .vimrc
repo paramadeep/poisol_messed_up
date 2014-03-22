@@ -82,3 +82,5 @@ let g:ctrlp_user_command = 'find %s -type f'
 :set spell
 hi clear SpellBad
 hi SpellBad cterm=underline
+
+:set paste

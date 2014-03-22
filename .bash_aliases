@@ -22,10 +22,11 @@ alias gst='git status'
 alias gcm='git commit -m'
 alias gca='git commit --amend -m'
 alias gpl='git pull'
-alias gpr='git pull --reb'
+alias gplr='git pull --reb'
 alias gph='git push'
 alias gsh='git stash -f'
 alias gsp='git stash pop'
+alias glog='git log --grep='
 
 
 #for pam
