@@ -70,7 +70,19 @@ nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<space>
 nmap <leader>gb :Gblame<space>
 nmap <leader>gd :Gdiff<space>
+nmap <leader>gph :Git<space>push<cr>
+nmap <leader>gpl :Git<space>pull<cr>
 
+"http://stackoverflow.com/questions/6053301/easier-way-to-navigate-between-vim-split-panes
+nmap <silent> <c-k> :wincmd k<CR>                                                                                                           
+nmap <silent> <c-j> :wincmd j<CR>            
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+" Move the splits arround!
+nmap <silent> <c-s-k> <C-W>k
+nmap <silent> <c-s-j> <C-W>j
+nmap <silent> <c-s-h> <C-W>h
+nmap <silent> <c-s-l> <C-W>l
 
 "sudo ln -sf /usr/bin/ack-grep /usr/local/bin/ack
 
