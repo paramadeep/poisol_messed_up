@@ -44,7 +44,7 @@ highlight LineNr ctermbg=black
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let mapleader = ","
-nmap <leader>ne :NERDTree<cr>
+nmap <leader>n :NERDTreeFind<cr>
 nmap <leader>mv :Rview<space>
 nmap <leader>mh :Rhelper<space>
 nmap <leader>mm :Rmodel<space>
@@ -59,12 +59,17 @@ nmap <leader>mr :e config/routes.rb<cr>
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 nmap <leader>e :e<space>
-nmap <leader>g :!<space>git<space>
 nmap <leader>1 :!<space>
 nmap <leader>s :%s///g
 nmap <c-f> :Ack<space>
 nmap <leader>f gg=G:w<cr>
 nmap <c-e> :MRU<cr>
+
+"https://github.com/tpope/vim-fugitive#fugitivevim
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<space>
+nmap <leader>gb :Gblame<space>
+nmap <leader>gd :Gdiff<space>
 
 
 "sudo ln -sf /usr/bin/ack-grep /usr/local/bin/ack
@@ -83,4 +88,11 @@ let g:ctrlp_user_command = 'find %s -type f'
 hi clear SpellBad
 hi SpellBad cterm=underline
 
-:set paste
+":set paste
+
+"https://github.com/scrooloose/nerdtree#faq
+autocmd vimenter * NERDTree
+autocmd VimEnter * wincmd p
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
