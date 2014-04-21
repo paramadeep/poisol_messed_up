@@ -17,7 +17,7 @@ alias rcar='rhc cartridge'
 alias rtail='rhc tail'
 
 #git
-alias gad='git add'
+alias gad='git add --all'
 alias gst='git status'
 alias gcm='git commit -m'
 alias gca='git commit --amend -m'
@@ -30,10 +30,15 @@ alias glog='git log --grep='
 
 
 #for pam
-alias sshreg='echo VH9zadU6 ; ssh -o GSSAPIAuthentication=no root@172.16.20.237'
 alias pamin='echo yes | cagvpn --login --username deepak --password July2011'
 alias pamout='cagvpn --logout'
 export RAILS_ENV=stub
+alias prodb="echo 'psql -U admin -h 172.16.20.210 -d promotion_qa -p 5446';sshpass -p S6djbI2w  ssh root@172.16.20.242"
+alias mpdb="echo 'psql -U admin -h 172.16.20.210 -d  merchandise_platform_qa -p 5435'; sshpass -p S6djbI2w  ssh root@172.16.20.242"
+alias proapp="echo 'tail -1000fn /data/promotion_app/current/log/italy_qa.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
+alias proser="echo 'tail -1000fn /data/services/logs/promotion-core.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
+alias mpapp="echo 'tail -1000fn /data/promotion_app/current/log/italy_qa.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
+alias mpser="echo 'tail -1000fn /data/promotion_app/current/log/italy_qa.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
 
 #vim
 export EDITOR=/usr/bin/vim

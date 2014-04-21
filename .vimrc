@@ -19,29 +19,23 @@ set autoindent
 
 "http://vimcasts.org/episodes/running-vim-within-irb/
 if has("autocmd")
-    " Enable filetype detection
-    filetype plugin indent on
-          " Restore cursor position
-    autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+  " Enable filetype detection
+  filetype plugin indent on
+  " Restore cursor position
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
 endif
 if &t_Co > 2 || has("gui_running")
-    syntax on
-    set hlsearch
+  syntax on
+  set hlsearch
 endif
 
 set wildmode=full
 set laststatus=2 "always display status
 set number
 highlight LineNr ctermbg=black
-
-"https://github.com/scrooloose/nerdtree
-"close the window
-"autocmd vimenter * NERDTree
-"autocmd VimEnter * wincmd p
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let mapleader = ","
 nmap <leader>n :NERDTreeFind<cr>
@@ -64,15 +58,13 @@ nmap <leader>s :%s///g
 nmap <c-f> :Ack<space>
 nmap <leader>f gg=G:w<cr>
 nmap <c-e> :MRU<cr>
-
 "https://github.com/tpope/vim-fugitive#fugitivevim
 nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<space>
-nmap <leader>gb :Gblame<space>
-nmap <leader>gd :Gdiff<space>
+nmap <leader>gc :Gcommit<space>-m ""
+nmap <leader>gb :Gblame<cr>
+nmap <leader>gd :Gdiff<cr>
 nmap <leader>gph :Git<space>push<cr>
 nmap <leader>gpl :Git<space>pull<cr>
-
 "http://stackoverflow.com/questions/6053301/easier-way-to-navigate-between-vim-split-panes
 nmap <silent> <c-k> :wincmd k<CR>                                                                                                           
 nmap <silent> <c-j> :wincmd j<CR>            
@@ -85,6 +77,8 @@ nmap <silent> <c-s-h> <C-W>h
 nmap <silent> <c-s-l> <C-W>l
 
 "sudo ln -sf /usr/bin/ack-grep /usr/local/bin/ack
+"let g:ackprg="</usr/bin/ack-grep> -s -H --nocolor --nogroup --column"
+let s:ack_default_options = " -s -H --nocolor --nogroup --column"
 
 "CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
@@ -104,7 +98,7 @@ hi SpellBad cterm=underline
 
 "https://github.com/scrooloose/nerdtree#faq
 autocmd vimenter * NERDTree
-autocmd VimEnter * wincmd p
 autocmd vimenter * if !argc() | NERDTree | endif
+autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
