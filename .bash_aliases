@@ -38,7 +38,7 @@ alias mpdb="echo 'psql -U admin -h 172.16.20.210 -d  merchandise_platform_qa -p 
 alias proapp="echo 'tail -1000fn /data/promotion_app/current/log/italy_qa.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
 alias proser="echo 'tail -1000fn /data/services/logs/promotion-core.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
 alias mpapp="echo 'tail -1000fn /data/promotion_app/current/log/italy_qa.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
-alias mpser="echo 'tail -1000fn /data/promotion_app/current/log/italy_qa.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
+alias mpser="echo 'tail -1000fn /data/promotion_app/current/log/italy_qa.log';sshpass -p D4O1jzu7  ssh root@172.16.20.241"
 
 #vim
 export EDITOR=/usr/bin/vim
@@ -46,3 +46,5 @@ export EDITOR=/usr/bin/vim
 
 #ftp
 alias ftps='python -m SimpleHTTPServer 8000'
+
+export PATH=$PATH:/home/d/work/my-vim-settings/git-plus
