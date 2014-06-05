@@ -58,13 +58,16 @@ nmap <leader>s :%s///g
 nmap <c-f> :Ack<space>
 nmap <leader>f gg=G:w<cr>
 nmap <c-e> :MRU<cr>
+
+nmap <leader>x :NERDTreeToggle<cr> 
+nmap <leader>z :NERDTreeToggle<cr> :set nonumber<cr>
 "https://github.com/tpope/vim-fugitive#fugitivevim
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<space>-m ""
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
-nmap <leader>gph :Git<space>push<cr>
-nmap <leader>gpl :Git<space>pull<cr>
+nmap <leader>gp :Git<space>push<cr>
+nmap <leader>gl :Git<space>pull<cr>
 "http://stackoverflow.com/questions/6053301/easier-way-to-navigate-between-vim-split-panes
 nmap <silent> <c-k> :wincmd k<CR>                                                                                                           
 nmap <silent> <c-j> :wincmd j<CR>            

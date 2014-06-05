@@ -26,7 +26,8 @@ alias gplr='git pull --reb'
 alias gph='git push'
 alias gsh='git stash -f'
 alias gsp='git stash pop'
-alias glog='git log --grep='
+alias gln='git log --name-status'
+alias gl='git log '
 
 
 #for pam
