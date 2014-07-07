@@ -1,38 +1,28 @@
-#Heroku
-wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-heroku login
+sudo apt-get update
 
-#rhc
-gem install rhc
-gem update rhc
-rhc setup
-
-#rvm
-sudo apt-get install curl
-curl -L https://get.rvm.io | bash -s stable
-source /home/r/.rvm/scripts/rvm
-sudo apt-get --no-install-recommends install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev
-rvm install 1.9.3
-rvm use 1.9.3 --default
-rvm gemset create rails3132
-rvm use 1.9.2@rails3123 --default
-gem install rails --version 3.2.13 --no-ri --no-rdoc
-
-#vim
 sudo apt-get install vim
 sudo apt-get install exuberant-ctags
-sudo apt-get install ack-grep
-
-#spree
-sudo apt-get install nodejs
 sudo apt-get install imagemagick --fix-missing
-
-#misc
+sudo apt-get install terminator
+sudo apt-get install ag
 sudo apt-get install jdownloader-installer
 
-#work
-mkdir work
-cd work
+#kill amazon
+sudo apt-get remove -y unity-lens-shopping
+sudo apt-get remove unity-scope-video-remote
+gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope', 'music-musicstore.scope', 'more_suggestions-ebay.scope', 'more_suggestions-ubuntushop.scope', 'more_suggestions-skimlinks.scope']"
+gsettings set com.canonical.Unity.Lenses remote-content-search none
+
+ln -s ~/work/nagal/.vim ~/.vim
+ln -s ~/work/nagal/.vimrc ~/.vimrc
+ln -s ~/work/nagal/.ctags ~/.ctags
+ln -s ~/work/nagal/.bash_aliases ~/.bash_aliases
+ln -s .gitignore_global ~/.gitignore_global
+mkdir ~/.config/terminator
+ln -s ~/work/nagal/terminator_config ~/.config/terminator/config
+
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
 
 #hibernate
 #sudo nano /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
