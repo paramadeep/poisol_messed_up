@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=tor
+Exec=/home/d/work/app/tor-browser_en-US/start-tor-browser
+Type=Application
+Icon=/home/d/.local/share/applications/apps/tor.ico

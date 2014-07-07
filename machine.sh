@@ -24,6 +24,9 @@ ln -s ~/work/nagal/terminator_config ~/.config/terminator/config
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
+mkdir -p ~/.local/share/applications/apps
+ln -s ~/work/nagal/apps ~/.local/share/applications/apps
+
 #hibernate
 #sudo nano /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 #[Re-enable hibernate by default]

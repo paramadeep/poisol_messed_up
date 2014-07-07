@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=me
+Exec=firefox -private-window -p Personal -no-remote
+Type=Application
+Icon=/home/d/.local/share/applications/apps/me.ico

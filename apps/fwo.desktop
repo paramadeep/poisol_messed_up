@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=fwo
+Exec=firefox -no-remote
+Type=Application
+Icon=/home/d/.local/share/applications/apps/fwo.ico
