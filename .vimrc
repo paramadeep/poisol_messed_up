@@ -7,13 +7,16 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'AutoComplPop'
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-cucumber'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/vim-auto-save'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'vim-scripts/jade.vim'
 call vundle#end()
 
 filetype plugin indent on
@@ -54,20 +57,17 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>            
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
-" Move the splits arround!
-nmap <silent> <c-s-k> <C-W>k
-nmap <silent> <c-s-j> <C-W>j
-nmap <silent> <c-s-h> <C-W>h
-nmap <silent> <c-s-l> <C-W>l
 
-"sudo ln -sf /usr/bin/ack-grep /usr/local/bin/ack
-"let g:ackprg="</usr/bin/ack-grep> -s -H --nocolor --nogroup --column"
-let s:ack_default_options = " -s -H --nocolor --nogroup --column"
+nmap <silent> <c-e> :CtrlPMRU <CR>
 
 "spelling
 :set spell
 hi clear SpellBad
 hi SpellBad cterm=underline
+
+"https://github.com/vim-scripts/vim-auto-save
+let g:auto_save = 1 
+let g:auto_save_no_updatetime = 1 
 
 "https://github.com/scrooloose/nerdtree#faq
 autocmd vimenter * NERDTree
@@ -75,8 +75,6 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive
-"git submodule init
-"git submodule update
-"git submodule foreach git pull origin master
+"http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint
+au FileType xml exe html svg ":silent %!xmllint --format --recover - 2>/dev/null"
 
