@@ -6,6 +6,11 @@ sudo apt-get install imagemagick --fix-missing
 sudo apt-get install terminator
 sudo apt-get install ag
 sudo apt-get install jdownloader-installer
+sudo apt-get install curl
+sudo apt-get install redshift
+sudo apt-get install sni-qt:i386
+sudo apt-get install tree
+
 
 #kill amazon
 sudo apt-get remove -y unity-lens-shopping
@@ -24,7 +29,10 @@ ln -s ~/work/nagal/terminator_config ~/.config/terminator/config
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
-mkdir -p ~/.local/share/applications/apps
+
+firefox -CreateProfile personal
+firefox -CreateProfile mail
+mkdir -p ~/.local/share/applications/
 ln -s ~/work/nagal/apps ~/.local/share/applications/apps
 
 #hibernate

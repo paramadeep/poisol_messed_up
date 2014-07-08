@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=red
+Exec=redshift -l 13:80
+Type=Application

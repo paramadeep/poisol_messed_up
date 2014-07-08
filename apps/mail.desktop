@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=mail
+Exec=firefox -p mail -no-remote
+Type=Application
+Icon=/home/d/.local/share/applications/apps/mail.ico

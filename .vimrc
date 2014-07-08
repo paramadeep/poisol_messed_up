@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'vim-scripts/jade.vim'
+Plugin 'chase/vim-ansible-yaml'
 call vundle#end()
 
 filetype plugin indent on
