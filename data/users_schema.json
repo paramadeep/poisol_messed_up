@@ -1,0 +1,70 @@
+{
+path: "/applicationUserService/{application_realm_name}/users/{user_id}.json",
+method: "GET",
+request_header: {
+path_params: [
+"application_realm_name",
+"user_id"
+]
+},
+request: { },
+response: {
+type: "object",
+properties: {
+lastName: {
+type: "string"
+},
+email: {
+type: "string"
+},
+userId: {
+type: "string"
+},
+roles: {
+type: "array",
+items: {
+type: "object",
+properties: {
+id: {
+type: "integer"
+},
+roleName: {
+type: "string"
+}
+}
+}
+},
+firstName: {
+type: "string"
+},
+merchandiseSubscriptions: {
+type: "array",
+items: {
+type: "object",
+properties: {
+userId: {
+type: "integer"
+},
+merchandiseId: {
+type: "integer"
+},
+merchandiseType: {
+type: "object",
+properties: {
+description: {
+type: "string"
+},
+type: {
+type: "string"
+}
+}
+},
+roleId: {
+type: "integer"
+}
+}
+}
+}
+}
+}
+}
