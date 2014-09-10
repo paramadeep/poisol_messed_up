@@ -1,0 +1,1 @@
+require 'poisol/factory'
