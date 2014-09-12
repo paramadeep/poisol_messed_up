@@ -1,4 +1,5 @@
 require_relative '../lib/poisol'
+
 require 'pry'
 
 describe Factory, "#score" do
