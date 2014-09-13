@@ -7,11 +7,16 @@ GEM
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     method_source (0.8.2)
+    mime-types (2.3)
+    netrc (0.7.7)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
     recursive-open-struct (0.5.0)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -36,5 +41,6 @@ PLATFORMS
 DEPENDENCIES
   pry
   recursive-open-struct (~> 0.5.0)
+  rest-client (~> 1.7.2)
   rspec
   webmock (~> 1.18.0)

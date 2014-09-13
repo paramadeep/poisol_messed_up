@@ -13,9 +13,7 @@ class Factory
     Dir["#{folder}/**/config.yml"].each do |config_file|
       dynamic_name = FileUtil.titilze_parent_dir config_file
       ConfigMap.add dynamic_name => config_file
-      Object.const_set dynamic_name,Class.new {
-        include ClassTemplate
-      }
+      Object.const_set dynamic_name,Class.new {include ClassTemplate}
     end
   end
 end

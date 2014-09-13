@@ -6,6 +6,7 @@ module ClassTemplate
     @base_file = ConfigMap.file self.class.name
     config = Parse.yaml_file @base_file
     @url = config.request.url
+    @request = Parse.json_file_to_hash (ConfigMap.request self.class.name)
   end
 
   def build
@@ -14,8 +15,9 @@ module ClassTemplate
 
   private
   def make_stub 
-    stub_request(:get, "http://http//localhost:7098:80/#{@url}").
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+    stub_request(:post, "http://http//localhost:7098:80/#{@url}").
+      with(:body => @request,
+           :headers => {'Accept'=>'*/*; q=0.5, application/xml', 'Accept-Encoding'=>'gzip, deflate', 'Content-Length'=>'11', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'Ruby'}).
       to_return(:status => 200, :body => "", :headers => {})
   end
 

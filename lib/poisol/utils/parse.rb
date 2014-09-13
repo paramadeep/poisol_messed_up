@@ -3,9 +3,16 @@ require 'recursive-open-struct'
 require 'json'
 
 class Parse
-  def self.json_file file_name
-    RecursiveOpenStruct.new(JSON.parse(File.open(file_name,"r")),:recurse_over_arrays => true)
+
+  def self.json_file_to_hash file_name
+    JSON.parse File.read(file_name)
   end 
+
+  def self.json_file_to_object file_name
+    hashMap = JSON.parse File.read(file_name)
+    RecursiveOpenStruct.new hashMap,:recurse_over_arrays => true
+  end 
+
 
   def self.to_json input
     input.to_hash.to_json
@@ -18,7 +25,8 @@ class Parse
   end 
 
   def self.yaml_file file_name
-    RecursiveOpenStruct.new(YAML.load_file(file_name),:recurse_over_arrays => true) 
+    hashMap = YAML.load_file(file_name)
+    RecursiveOpenStruct.new hashMap,:recurse_over_arrays => true
   end
 
 end

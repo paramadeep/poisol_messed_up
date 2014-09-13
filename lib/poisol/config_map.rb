@@ -8,4 +8,8 @@ class ConfigMap
   def self.file class_name
     @@config_file_map[class_name]
   end
+
+  def self.request class_name
+    FileUtil.getRequest @@config_file_map[class_name]
+  end
 end
