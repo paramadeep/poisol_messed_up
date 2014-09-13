@@ -18,6 +18,8 @@ Plugin 'vim-scripts/vim-auto-save'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'vim-scripts/jade.vim'
 Plugin 'chase/vim-ansible-yaml'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'thoughtbot/vim-rspec'
 call vundle#end()
 
 filetype plugin indent on
@@ -33,8 +35,13 @@ set autoindent
 
 set wildmode=full
 set laststatus=2 "always display status
-set number
 highlight LineNr ctermbg=black
+
+let mapleader = "'"
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 let mapleader = ","
 nmap <leader>n :NERDTreeFind<cr>
@@ -43,9 +50,9 @@ nmap <leader>q :q<cr>
 nmap <leader>e :e<space>
 nmap <leader>1 :!<space>
 nmap <leader>s :%s///g
-nmap <leader>f gg=G:w<cr>
-nmap <leader>x :NERDTreeToggle<cr> 
-nmap <leader>z :NERDTreeToggle<cr> :set nonumber<cr>
+nmap <leader>f gg=G:w<cr><c-o><c-o>
+nmap <leader>x :set invnumber<cr>
+nmap <leader>z :NERDTreeToggle<cr>
 "https://github.com/tpope/vim-fugitive#fugitivevim
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<space>-m ""
@@ -71,9 +78,9 @@ let g:auto_save = 1
 let g:auto_save_no_updatetime = 1 
 
 "https://github.com/scrooloose/nerdtree#faq
-autocmd vimenter * NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd VimEnter * wincmd p
+"autocmd vimenter * NERDTree
+"autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint

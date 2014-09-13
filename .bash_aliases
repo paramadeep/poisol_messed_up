@@ -20,6 +20,8 @@ alias rtail='rhc tail'
 alias gad='git add --all'
 alias gst='git status'
 alias gcm='git commit -m'
+alias gcma='git commit -a -m'
+alias gcaa='git commit -a --amend -m'
 alias gca='git commit --amend -m'
 alias gpl='git pull'
 alias gplr='git pull --reb'
@@ -48,4 +50,4 @@ export EDITOR=/usr/bin/vim
 #ftp
 alias ftps='python -m SimpleHTTPServer 8000'
 
-export PATH=$PATH:/home/d/work/my-vim-settings/git-plus
+export PATH=$PATH:/home/d/work/nagal/git-plus:/home/d/work/apps/node/bin:$JAVA_HOME/jre/bin/:$JAVA_HOME/bin/:/home/d/work/apps/gradle-2.0/bin:/home/d/work/apps/sdk_adt/tools:/home/d/work/apps/sdk_adt/platform-tools/:/home/d/work/apps/play-2.0:/home/d/work/apps/scala-2.11.2/bin/
