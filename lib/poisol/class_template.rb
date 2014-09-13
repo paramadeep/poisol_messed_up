@@ -7,6 +7,7 @@ module ClassTemplate
     config = Parse.yaml_file @base_file
     @url = config.request.url
     @request = Parse.json_file_to_hash (ConfigMap.request self.class.name)
+    @response = Parse.json_file_to_hash (ConfigMap.response self.class.name)
     generate_request_methods
   end
 
@@ -26,12 +27,8 @@ module ClassTemplate
   private
   def make_stub 
     stub_request(:post, "http://http//localhost:7098:80/users").
-               with(:body => @request).
-                        to_return(:status => 200, :body => "", :headers => {})
-
-    #stub_request(:post, "http://http//localhost:7098:80/#{@url}").
-    #with(:body => @request).
-      #to_return(:status => 200, :body => "", :headers => {})
+      with(:body => @request).
+      to_return(:status => 200, :body => @response, :headers => {})
   end
 
 end

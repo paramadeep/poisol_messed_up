@@ -8,5 +8,8 @@ class FileUtil
     "#{File.dirname file_name}/request.json"
   end
 
+  def self.getResponse file_name
+    "#{File.dirname file_name}/response.json"
+  end
 end
 
