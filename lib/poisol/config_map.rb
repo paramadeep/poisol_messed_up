@@ -10,11 +10,10 @@ class ConfigMap
   end
 
   def self.request class_name
-    FileUtil.getRequest @@config_file_map[class_name]
   end
 
   def self.response class_name
-    FileUtil.getResponse @@config_file_map[class_name]
+    config_file = @@config_file_map[class_name]
   end
 
 end

@@ -1,6 +1,6 @@
 request:
     url: users
-    type: get
+    type: post
 response:
    status: 200
    headers:

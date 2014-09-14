@@ -1,7 +1,3 @@
-require 'webmock'
-include WebMock::API
-WebMock.disable_net_connect!(:allow_localhost => true)
-
 require_relative './config_map'
 require_relative './class_template'
 require_relative './utils/file_util'
