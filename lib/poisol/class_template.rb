@@ -9,9 +9,10 @@ module ClassTemplate
 
   def prepare_url
     config = Parse.yaml_file @config_file
-    @url = config.request.url
-    @type = config.request.type.intern
-    @params = config.request.params
+    binding.pry
+    @url = config["url"]
+    @type = config["type"].intern
+    @query = config["query"]
   end
 
   def prepare_request
@@ -37,7 +38,7 @@ module ClassTemplate
 
   def build
     stub = stub_request(@type, "http://http//localhost:7098:80/#{@url}")
-    stub.with(:query => @params) unless @params.eql? ""
+    stub.with(:query => @query) unless @query.eql? ""
     stub.with(:body => @request) unless @request.eql? ""
     stub.to_return(:status => 200, :body => @response, :headers => {})
   end

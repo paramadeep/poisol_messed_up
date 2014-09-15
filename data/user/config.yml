@@ -1,9 +1,5 @@
-request:
-    url: users
-    type: post
-response:
-   status: 200
-   headers:
-      content-type: application/json
-
-
+url: users
+type: post
+query: 
+  age: "10"
+  date: "10-10-2014"

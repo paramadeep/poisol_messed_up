@@ -25,8 +25,7 @@ class Parse
   end 
 
   def self.yaml_file file_name
-    hashMap = YAML.load_file(file_name)
-    RecursiveOpenStruct.new hashMap,:recurse_over_arrays => true
+    YAML.load_file(file_name)
   end
 
 end
