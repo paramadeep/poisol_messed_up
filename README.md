@@ -1,15 +1,20 @@
 #Poisol
 
-For tests suite that uses stubs for http calls, Poisol generates builder objects that could be used to setup http stubs, similar to data builders used to set up test data in database. Hence, avoiding clumsy json manipulations and duplications, and keeping your test data setup as part of your test's code.
+For tests suite that uses stubs for http calls, Poisol generates builder objects that could be used to setup http stubs, similar to data builders used to set up test data in database. Hence, avoiding clumsy manual json manipulations and duplications, and keeping your test data setup as part of your test's code.
 
 ###Example
 
-Stubbing a service that provides user identification, gets as simple as 
+Stubbing a http service that provides user identification, gets as simple as 
 
 ```ruby
-  User.new.byName('Joe').hasRole('buyer').build  # => webmock that would return role as 'buyer' for http call user 'Joe'
-  User.new.byName('Danny').hasRole('suppliler').build # => webmock that would return role as 'supplier' for http call user 'Danny'
-  User.new.build # => webmock that would return role as 'Singer' for http call user 'Raji'
+  User.new.byName('Joe').hasRole('buyer').build  
+  # => webmock that would return role as 'buyer' for http call user 'Joe'
+  
+  User.new.byName('Mani').hasRole('Manager').build 
+  # => webmock that would return role as 'Manager' for http call user 'Mani'
+  
+  User.new.build 
+  # => webmock that would return role as 'Singer' for http call user 'Raji'
 ```
 given a minimal configuration
 
@@ -27,7 +32,7 @@ Poisol, dynamically generates class called 'User', with methods 'byName' and 'ha
 
 The following can be dynamically configured
 - Request 
-  - url
+  - url*
   - type
   - query params
   - request body
@@ -37,11 +42,11 @@ The following can be dynamically configured
   - response body
 
 ##ToDo
-* Params config
-* URL config 
 * Nested json
-* Array json
+* Array json (column & row)
 * Nested array json
+* URL config 
+* Response code and header config
 * Parent URL
-* Inline request and response
-
+* Documentation for 'getting started' and details
+* Test coverage
