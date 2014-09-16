@@ -1,0 +1,8 @@
+url: book
+type: get
+query:
+  author: "bharathi"
+response:
+  '{
+      title: "independance"
+  }'
