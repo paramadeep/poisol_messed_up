@@ -7,9 +7,13 @@ require_relative '../lib/poisol'
 require 'pry'
 
 require 'simplecov'
-SimpleCov.start
+require 'coveralls'
 SimpleCov.minimum_coverage 40
-SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
+SimpleCov.start
 
 RSpec.configure do |config|
   config.before(:each) do
