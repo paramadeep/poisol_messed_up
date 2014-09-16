@@ -8,7 +8,7 @@ require 'pry'
 
 require 'simplecov'
 SimpleCov.start
-SimpleCov.minimum_coverage 90
+SimpleCov.minimum_coverage 40
 SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 
 RSpec.configure do |config|
