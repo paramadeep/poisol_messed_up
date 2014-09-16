@@ -1,5 +1,3 @@
 url: users
 type: post
-query: 
-  age: "10"
-  date: "10-10-2014"
+

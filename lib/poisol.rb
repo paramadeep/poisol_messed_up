@@ -1,1 +1,1 @@
-require 'poisol/factory' 
+require 'poisol/stub_factory' 
