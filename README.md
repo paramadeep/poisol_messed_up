@@ -1,6 +1,9 @@
 #Poisol
 
-For tests suite that uses stubs for http calls, Poisol generates builder objects that could be used to setup http stubs, similar to data builders used to set up test data in database. Hence, avoiding clumsy manual json manipulations and duplications, and keeping your test data setup as part of your test's code.
+For tests suite that uses stubs for http calls, Poisol generates builder objects that could be used to setup http stubs, similar to data builders used to set up test data in database. 
+Hence, avoiding clumsy manual json manipulations and duplications, and keeping test stub data setup as part of test's code.
+
+[![Build Status](https://travis-ci.org/paramadeep/poisol.svg?branch=master)](https://travis-ci.org/paramadeep/poisol) [![Dependency Status](https://gemnasium.com/paramadeep/poisol.svg)](https://gemnasium.com/paramadeep/poisol) [![Code Climate](https://codeclimate.com/github/paramadeep/poisol/badges/gpa.svg)](https://codeclimate.com/github/paramadeep/poisol)  [![Test Coverage](https://codeclimate.com/github/paramadeep/poisol/badges/coverage.svg)](https://codeclimate.com/github/paramadeep/poisol)
 
 ###Example
 

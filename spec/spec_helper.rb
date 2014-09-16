@@ -6,6 +6,11 @@ include WebMock::API
 require_relative '../lib/poisol'
 require 'pry'
 
+require 'simplecov'
+SimpleCov.start
+SimpleCov.minimum_coverage 90
+SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+
 RSpec.configure do |config|
   config.before(:each) do
     WebMock.reset!

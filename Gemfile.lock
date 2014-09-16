@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    poisol (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -6,30 +11,38 @@ GEM
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     method_source (0.8.2)
     mime-types (2.3)
+    multi_json (1.10.1)
     netrc (0.7.7)
-    pry (0.10.1)
+    pry (0.10.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    recursive-open-struct (0.5.0)
+    rake (10.3.2)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rspec (3.0.0)
-      rspec-core (~> 3.0.0)
-      rspec-expectations (~> 3.0.0)
-      rspec-mocks (~> 3.0.0)
-    rspec-core (3.0.4)
-      rspec-support (~> 3.0.0)
-    rspec-expectations (3.0.4)
+    rspec (3.1.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
+    rspec-core (3.1.3)
+      rspec-support (~> 3.1.0)
+    rspec-expectations (3.1.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.0.0)
-    rspec-mocks (3.0.4)
-      rspec-support (~> 3.0.0)
-    rspec-support (3.0.4)
+      rspec-support (~> 3.1.0)
+    rspec-mocks (3.1.0)
+      rspec-support (~> 3.1.0)
+    rspec-support (3.1.0)
+    rubygems-tasks (0.2.4)
     safe_yaml (1.0.3)
+    simplecov (0.9.0)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     slop (3.6.0)
     webmock (1.18.0)
       addressable (>= 2.3.6)
@@ -39,8 +52,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  pry
-  recursive-open-struct (~> 0.5.0)
+  poisol!
+  pry (= 0.10.0)
+  rake (= 10.3.2)
   rest-client (~> 1.7.2)
-  rspec
+  rspec (= 3.1.0)
+  rubygems-tasks (= 0.2.4)
+  simplecov (= 0.9.0)
   webmock (~> 1.18.0)
