@@ -1,6 +1,6 @@
-require_relative './spec_helper'
+require_relative './../spec_helper'
 
-describe StubFactory, "#score" do
+describe ClassTemplate, "#post_user" do
 
   it "default request and response" do
     User.new.build()
