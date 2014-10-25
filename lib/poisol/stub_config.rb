@@ -29,22 +29,30 @@ class StubConfig
     @request.url = @config["url"]
     @request.type = @config["type"].intern
     @request.query = @config["query"]
-    @request.body = @is_inline?  @config["request_body"] : exploaded_request
+    @request.body = @is_inline?  get_inline_request_body : get_exploaded_request_body
   end
 
-  def exploaded_request
+  def get_exploaded_request_body
     request_file = "#{File.dirname @config_file}/request.json"
     return (File.exists? request_file) ? Parse.json_file_to_hash(request_file) : ""
   end
 
   def build_response
     @response = Response.new
-    @response.body = @is_inline? @config["response_body"] : exploaded_response
+    @response.body = @is_inline? get_inline_response_body  : get_exploaded_response_body
   end
 
-  def exploaded_response
+  def get_exploaded_response_body
     response_file = "#{File.dirname @config_file}/response.json"
     return (File.exists? response_file)? Parse.json_file_to_hash(response_file) : ""
+  end
+
+  def get_inline_response_body
+    return @config["response_body"].nil? ? "": Parse.json_to_hash(@config["response_body"])
+  end
+
+  def get_inline_request_body
+    return @config["request_body"].nil? ? "": Parse.json_to_hash(@config["request_body"])
   end
 
 end

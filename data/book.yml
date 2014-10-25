@@ -2,7 +2,15 @@ url: book
 type: get
 query:
   author: "bharathi"
-response:
+response_body:
   '{
-      title: "independance"
+    "title": "independance",
+    "category": {
+      "age_group": "10",
+      "genre": "action",
+      "publisher": {
+        "name": "summa",
+        "place":"erode"
+      }
+    }
   }'

@@ -11,5 +11,9 @@ class Parse
     YAML.load_file(file_name)
   end
 
+  def self.json_to_hash json
+    JSON.parse json
+  end
+
 end
 
