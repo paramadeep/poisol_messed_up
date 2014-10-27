@@ -26,10 +26,33 @@ class StubConfig
   private
   def build_request
     @request = Request.new
-    @request.url = @config["url"]
-    @request.type = @config["type"].intern
-    @request.query = @config["query"]
+    @request.url = @config["request"]["url"]
+    @request.type = @config["request"]["type"].intern
+    @request.query = @config["request"]["query"]
     @request.body = @is_inline?  get_inline_request_body : get_exploaded_request_body
+  end
+
+  def build_response
+    @response = Response.new
+    response.body = @is_inline? get_inline_response_body  : get_exploaded_response_body
+    handle_resonse_array_type
+  end
+
+  def handle_resonse_array_type
+    return if @config["response"].nil?
+    array_type = @config["response"]["array_type"]
+    @response.array_type = array_type.nil? ? "" : array_type
+  end
+
+
+  def get_inline_response_body
+    body = @config["response"]["body"]
+    return (body.nil?) ? "": (Parse.json_to_hash body)
+  end
+
+  def get_inline_request_body
+    body = @config["request"]["body"]
+    return (body.nil?) ? "": (Parse.json_to_hash body)
   end
 
   def get_exploaded_request_body
@@ -37,22 +60,9 @@ class StubConfig
     return (File.exists? request_file) ? Parse.json_file_to_hash(request_file) : ""
   end
 
-  def build_response
-    @response = Response.new
-    @response.body = @is_inline? get_inline_response_body  : get_exploaded_response_body
-  end
-
   def get_exploaded_response_body
     response_file = "#{File.dirname @config_file}/response.json"
     return (File.exists? response_file)? Parse.json_file_to_hash(response_file) : ""
-  end
-
-  def get_inline_response_body
-    return @config["response_body"].nil? ? "": Parse.json_to_hash(@config["response_body"])
-  end
-
-  def get_inline_request_body
-    return @config["request_body"].nil? ? "": Parse.json_to_hash(@config["request_body"])
   end
 
 end
@@ -63,6 +73,6 @@ class Request
 end
 
 class Response 
-  attr_accessor :body
+  attr_accessor :body,:array_type
 end
 

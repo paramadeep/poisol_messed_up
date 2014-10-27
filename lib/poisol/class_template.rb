@@ -52,7 +52,6 @@ module ClassTemplate
     return if @request_body.nil?
     @request_body.each do |field|
       define_singleton_method("by#{field[0].capitalize}") do |*value|
-
         @request_body[field[0]] = value[0]
         self
       end
@@ -62,6 +61,16 @@ module ClassTemplate
   def generate_response_methods
     @response_body = @config.response.body
     return if @response_body.nil?
+    if @config.response.array_type == "column_array"
+      generate_response_for_column_array
+    elsif @config.response.array_type == "row_array"
+      generate_response_for_row_array
+    else
+      generate_response_for_object
+    end
+  end
+
+  def generate_response_for_object
     @response_body.each do |field|
       define_singleton_method("has#{field[0].capitalize}") do |*value|
         value = value[0]
@@ -76,4 +85,3 @@ module ClassTemplate
   end
 
 end
-

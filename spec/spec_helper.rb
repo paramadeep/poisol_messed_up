@@ -16,12 +16,15 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 SimpleCov.start
 
 RSpec.configure do |config|
+
   config.before(:each) do
     WebMock.reset!
   end
-  config.before(:all) do
+
+  config.before(:suite) do
     WebMock.disable_net_connect!(:allow_localhost => true)
     factory = StubFactory.new.build("data")
   end
+
 end
 

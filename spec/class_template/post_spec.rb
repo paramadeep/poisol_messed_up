@@ -1,5 +1,3 @@
-require_relative './../spec_helper'
-
 describe ClassTemplate, "#post_user" do
 
   it "default request and response" do
@@ -9,7 +7,7 @@ describe ClassTemplate, "#post_user" do
   end
 
   it "dynamic request and response" do
-    name = "dummy"
+    name = "ummy"
     job = "vetti"
     User.new.byName(name).hasJob(job).build()
     response = RestClient.post "http://http//localhost:7098:80/users","name"=>name

@@ -1,5 +1,3 @@
-require_relative './../spec_helper'
-
 describe ClassTemplate, "#get_books" do
 
   it "default request and response" do

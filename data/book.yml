@@ -1,9 +1,10 @@
-url: book
-type: get
-query:
-  author: "bharathi"
-response_body:
-  '{
+request:
+  url: book
+  type: get
+  query:
+    author: "bharathi"
+response:
+  body:  '{
     "title": "independance",
     "category": {
       "age_group": "10",
