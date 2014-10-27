@@ -3,6 +3,7 @@ require_relative './stub_config'
 require_relative './class_template'
 require_relative './utils/file_util'
 require_relative './utils/parse'
+require_relative './extensions/hash'
 
 class StubFactory
   def build folder

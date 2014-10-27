@@ -37,17 +37,6 @@ module ClassTemplate
     stub.to_return(:status => 200, :body => @response_body, :headers => {})
   end
 
-  def generate_request_methods 
-    @request_body = @config.request.body 
-    return if @request_body.nil?
-    @request_body.each do |field|
-      define_singleton_method("by#{field[0].capitalize}") do |*value|
-        @request_body[field[0]] = value[0]
-        self
-      end
-    end
-  end
-
   def generate_query_methods
     @query = @config.request.query 
     @query.each do |field|
@@ -58,11 +47,29 @@ module ClassTemplate
     end
   end
 
+  def generate_request_methods 
+    @request_body = @config.request.body 
+    return if @request_body.nil?
+    @request_body.each do |field|
+      define_singleton_method("by#{field[0].capitalize}") do |*value|
+
+        @request_body[field[0]] = value[0]
+        self
+      end
+    end
+  end
+
   def generate_response_methods
     @response_body = @config.response.body
+    return if @response_body.nil?
     @response_body.each do |field|
       define_singleton_method("has#{field[0].capitalize}") do |*value|
-        @response_body[field[0]] = value[0]
+        value = value[0]
+        if value.class.to_s == "String"
+          @response_body[field[0]] = value
+        elsif value.class.to_s == "Hash"
+          @response_body[field[0]] = @response_body[field[0]].deep_merge value
+        end
         self
       end
     end
