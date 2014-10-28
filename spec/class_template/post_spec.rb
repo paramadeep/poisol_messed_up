@@ -9,7 +9,7 @@ describe ClassTemplate, "#post_user" do
   it "dynamic request and response" do
     name = "ummy"
     job = "vetti"
-    User.new.byName(name).hasJob(job).build()
+    User.new.by_name(name).has_job(job).build()
     response = RestClient.post "http://http//localhost:7098:80/users","name"=>name
     expect(response.body).to eq("job"=>job)
   end

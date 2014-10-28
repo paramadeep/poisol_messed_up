@@ -1,1 +1,2 @@
-require 'poisol/stub_factory' 
+require 'active_support/core_ext'
+Dir["#{File.dirname(__FILE__)}/poisol/**/*.rb"].each { |f| require(f) }

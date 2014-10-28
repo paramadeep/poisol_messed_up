@@ -1,10 +1,3 @@
-require_relative './config_map'
-require_relative './stub_config'
-require_relative './class_template'
-require_relative './utils/file_util'
-require_relative './utils/parse'
-require 'active_support/core_ext'
-
 class StubFactory
   def build folder
     folder.chomp! '/'
