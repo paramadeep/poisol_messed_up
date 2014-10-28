@@ -26,7 +26,7 @@ module ClassTemplate
   end
 
   def build
-    stub = stub_request(@type, "http://http//localhost:7098:80/#{@url}")
+    stub = stub_request(@type, "http://#{Domain.base_url}/#{@url}")
     stub.with(:query => @query) unless @query.eql? ""
     stub.with(:body => @request_body) unless @request_body.eql? ""
     @response_body = Parse.hash_array_to_column_hash(@response_body) if @config.response.array_type == "column_array"
