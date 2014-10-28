@@ -28,12 +28,9 @@ module ClassTemplate
     object_name = self.class.to_s.classify.underscore
     method_name = "has_#{object_name}"
     define_singleton_method(method_name) do
-      @response_body.append @response_body_object
+      @response_body << @response_body_object.deep_dup
       self
     end
-    alias_name = "has_another_#{object_name}"
-    #alias_method alias_name.intern,method_name.intern
-    #alias_method method_name.intern,alias_name.intern
   end
 
   def generate_methods_to_alter_response_object

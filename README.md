@@ -55,3 +55,4 @@ The following can be dynamically configured
 * Parent URL
 * Documentation for 'getting started' and details
 * Test coverage
+* Throw error when configured and input field values are different
