@@ -1,0 +1,11 @@
+request:
+  url: column
+  type: get
+response:
+  array_type: "column_array"
+  body: '{
+    "title": "independance",
+    "category": {
+      "age_group": "10"
+      }
+    }'
