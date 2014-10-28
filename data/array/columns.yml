@@ -5,7 +5,5 @@ response:
   array_type: "column_array"
   body: '{
     "title": "independance",
-    "category": {
-      "age_group": "10"
-      }
-    }'
+    "category": "10"
+  }'

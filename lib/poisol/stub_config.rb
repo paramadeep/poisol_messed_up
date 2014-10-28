@@ -73,6 +73,6 @@ class Request
 end
 
 class Response 
-  attr_accessor :body,:array_type
+  attr_accessor :body,:array_type,:is_column_array,:is_row_array
 end
 

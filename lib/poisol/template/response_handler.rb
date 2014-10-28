@@ -18,7 +18,7 @@ module ClassTemplate
       actual_field_value = field[1]
       define_singleton_method("with_#{field_name.underscore}") do |*input_value|
         input_value = input_value[0]
-        @response_body.last[field_name] = actual_field_value.class.to_s == "Hash" ? response_body.last[field_name].merge(input_value) : input_value
+        @response_body.last[field_name] = actual_field_value.class.to_s == "Hash" ? @response_body.last[field_name].deep_merge(input_value) : input_value
         self
       end
     end
