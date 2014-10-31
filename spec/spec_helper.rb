@@ -10,8 +10,7 @@ require 'simplecov'
 require 'coveralls'
 SimpleCov.minimum_coverage 40
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
+  SimpleCov::Formatter::HTMLFormatter
 ]
 SimpleCov.start
 

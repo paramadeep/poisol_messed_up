@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry','0.10.0'
   s.add_development_dependency 'rubygems-tasks', '0.2.4'
   s.add_development_dependency 'simplecov', '0.9.1'
-  s.add_development_dependency 'coveralls', '>= 0.7.1'
   s.add_development_dependency'webmock', '~>1.18.0'
   s.add_development_dependency'rest-client', '~> 1.7.2'
   s.add_development_dependency 'activesupport', '~> 4.1.6'
