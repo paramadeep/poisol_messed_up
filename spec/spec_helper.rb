@@ -7,7 +7,6 @@ require_relative '../lib/poisol'
 require 'pry'
 
 require 'simplecov'
-require 'coveralls'
 SimpleCov.minimum_coverage 40
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter
