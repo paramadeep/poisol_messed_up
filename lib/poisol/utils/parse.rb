@@ -13,6 +13,7 @@ class Parse
   end
 
   def self.hash_array_to_column_hash hash_array
+    return [] if hash_array.blank?
     column_hash = Hash.new
     hash_array[0].each_key { |key| column_hash.merge!(key=>[])}
     hash_array.each do |hash|
