@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name = 'poisol'
-  s.version = '0.0.1'
-  s.date = '2014-09-16'
-  s.summary = 'Data builders for http stubs'
-  s.description = "Data builders for http stubs"
+  s.version = '0.0.2'
+  s.date = '2014-11-03'
+  s.summary = 'Generate builders for http stubs'
+  s.description = "Generate builders for http stubs"
   s.authors = ["Deepak"]
   s.files = Dir['README.md', 'lib/**/*']
   s.test_files = Dir['spec/**/*']

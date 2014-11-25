@@ -37,14 +37,24 @@ Poisol, dynamically generates class called 'User', with methods 'byName' and 'ha
 
 The following can be dynamically configured
 - Request 
-  - url*
+  - url
   - type
   - query params
   - request body
 - Response 
-  - code*
-  - header*
+  - code
+  - header
   - response body
+
+## Prepositions
+
+|Preposition| for defining|
+|----:|:----|
+|for|url & query params |
+|by|request body filed/array item|
+|having|request body array item field|
+|has|response body field/array item|
+|with|response body array item field|
 
 ##ToDo
 * Nested json
