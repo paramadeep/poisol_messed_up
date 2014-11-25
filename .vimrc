@@ -10,6 +10,8 @@ Plugin 'AutoComplPop'
 Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rake'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'scrooloose/nerdtree'
@@ -20,6 +22,8 @@ Plugin 'vim-scripts/jade.vim'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'docunext/closetag.vim'
+Plugin 'Raimondi/delimitMate'
 call vundle#end()
 
 filetype plugin indent on
@@ -37,11 +41,10 @@ set wildmode=full
 set laststatus=2 "always display status
 highlight LineNr ctermbg=black
 
-let mapleader = "'"
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+map ft :w<CR>:call RunCurrentSpecFile()<CR>
+map fs :w<CR>:call RunNearestSpec()<CR>
+map fp :w<CR>:call RunLastSpec()<CR>
+map fa :w<CR>:call RunAllSpecs()<CR>
 
 let mapleader = ","
 nmap <leader>n :NERDTreeFind<cr>
@@ -54,17 +57,17 @@ nmap <leader>f gg=G:w<cr><c-o><c-o>
 nmap <leader>x :set invnumber<cr>
 nmap <leader>z :NERDTreeToggle<cr>
 "https://github.com/tpope/vim-fugitive#fugitivevim
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<space>-m ""
-nmap <leader>gb :Gblame<cr>
-nmap <leader>gd :Gdiff<cr>
-nmap <leader>gp :Git<space>push<cr>
-nmap <leader>gl :Git<space>pull<cr>
+nmap gs :Gstatus<cr>
+nmap gc :Gcommit<space>-m ""
+nmap gb :Gblame<cr>
+nmap gd :Gdiff<cr>
+nmap gp :Git<space>push<cr>
+nmap gl :Git<space>pull<cr>
 "http://stackoverflow.com/questions/6053301/easier-way-to-navigate-between-vim-split-panes
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>            
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+nmap fk :wincmd k<CR>
+nmap fj :wincmd j<CR>            
+nmap fh :wincmd h<CR>
+nmap fl :wincmd l<CR>
 
 nmap <silent> <c-e> :CtrlPMRU <CR>
 
@@ -84,5 +87,5 @@ let g:auto_save_no_updatetime = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint
-au FileType xml exe html svg ":silent %!xmllint --format --recover - 2>/dev/null"
+"au FileType xml exe html svg ":silent %!xmllint --format --recover - 2>/dev/null"
 
