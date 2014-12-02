@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'poisol'
-  s.version = '0.0.3'
+  s.version = '0.0.4'
   s.date = '2014-12-02'
   s.summary = 'Generate builders for http stubs'
   s.description = "Generate builders for http stubs"
