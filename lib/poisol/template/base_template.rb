@@ -30,7 +30,7 @@ module ClassTemplate
     stub.with(:query => @query) unless @query.eql? ""
     stub.with(:body => @request_body) unless @request_body.eql? ""
     @response_body = Parse.hash_array_to_column_hash(@response_body) if @config.response.array_type == "column_array"
-    stub.to_return(:status => 200, :body => @response_body, :headers => {})
+    stub.to_return(:status => 200, :body => @response_body.to_s, :headers => {})
   end
 
 end

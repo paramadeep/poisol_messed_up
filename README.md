@@ -57,12 +57,8 @@ The following can be dynamically configured
 |with|response body array item field|
 
 ##ToDo
-* Nested json
-* Array json (column & row)
-* Nested array json
 * URL config 
 * Response code and header config
-* Parent URL
 * Documentation for 'getting started' and details
 * Test coverage
 * Throw error when configured and input field values are different
