@@ -9,7 +9,7 @@ describe ClassTemplate, "#array" do
   it "empty column array" do
     Columns.new.build
     response = RestClient.get "http://localhost:80/column"
-    expect(response.body).to eq([])
+    expect(response.body).to eq("[]")
   end
 
   it "row array" do
@@ -21,7 +21,7 @@ describe ClassTemplate, "#array" do
   it "empty row array" do
     Rows.new.build
     response = RestClient.get "http://localhost:80/row"
-    expect(response.body).to eq([])
+    expect(response.body).to eq("[]")
   end
 
 end
