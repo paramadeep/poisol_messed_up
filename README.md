@@ -59,6 +59,9 @@ The following can be dynamically configured
 ##ToDo
 * URL config 
 * Response code and header config
+* Functional test for query params
+* Refactor Response Handler 
+* Generate Request Handler, based on Response Handler
 * Documentation for 'getting started' and details
 * Test coverage
 * Throw error when configured and input field values are different

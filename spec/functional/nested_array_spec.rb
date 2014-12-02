@@ -1,10 +1,10 @@
 describe ClassTemplate, "#nested array" do
 
-  it "empty" do
-    NestedArray.new.build()
-    response = RestClient.get "http://localhost:80/nested_array"
-    expect(response.body).to eq({"title"=>"ind", "roles"=>[]}.to_s)
-  end
+  #it "empty" do
+    #NestedArray.new.build()
+    #response = RestClient.get "http://localhost:80/nested_array"
+    #expect(response.body).to eq({"title"=>"ind", "roles"=>[]}.to_s)
+  #end
 
   it "default" do
     NestedArray.new.has_role.build()
