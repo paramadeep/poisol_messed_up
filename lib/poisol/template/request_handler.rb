@@ -1,6 +1,6 @@
 module ClassTemplate
-    def generate_request_methods 
-      @request_body = @config.request.body 
+    def ClassTemplate.generate_request_methods 
+      @request_body = @config.request.body.clone
       return if @request_body.nil?
       @request_body.each do |field|
         define_singleton_method("by_#{field[0].underscore}") do |*value|

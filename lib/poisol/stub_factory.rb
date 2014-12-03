@@ -30,7 +30,12 @@ class StubFactory
 
   def create_class class_name,config
     ConfigMap.add class_name => config
-    Object.const_set class_name,Class.new {include ClassTemplate}
+    Object.const_set class_name,Class.new {
+      def self.get_class_name 
+        class_name
+      end
+      include ClassTemplate
+    }
   end
 
 end

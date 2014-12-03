@@ -1,18 +1,18 @@
 module ClassTemplate
 
-  def prepare_response
+  def ClassTemplate.prepare_response
     return if @config.response.body.blank?
     @config.response.array_type.blank? ? generate_methods_to_alter_response_object : generate_methods_to_alter_response_array
   end
 
-  def generate_methods_to_alter_response_array
+  def ClassTemplate.generate_methods_to_alter_response_array
     @response_body_object = @config.response.body
     @response_body = []
     generate_method_to_append_response_array
     generate_method_to_alter_response_array_object
   end
 
-  def generate_method_to_alter_response_array_object
+  def ClassTemplate.generate_method_to_alter_response_array_object
     @response_body_object.each do |field|
       field_name = field[0]
       actual_field_value = field[1]
@@ -29,7 +29,7 @@ module ClassTemplate
     end
   end
 
-  def generate_method_to_append_response_array
+  def ClassTemplate.generate_method_to_append_response_array
     object_name = self.class.to_s.classify.underscore
     method_name = "has_#{object_name}"
     define_singleton_method(method_name) do
@@ -38,7 +38,7 @@ module ClassTemplate
     end
   end
 
-  def generate_methods_to_alter_response_object
+  def ClassTemplate.generate_methods_to_alter_response_object
     @response_body = @config.response.body.clone
     @response_body.each do |field|
       field_name = field[0]
@@ -53,7 +53,7 @@ module ClassTemplate
     end
   end
 
-  def generate_method_to_alter_response_field_array field_name,actual_field_values
+  def ClassTemplate.generate_method_to_alter_response_field_array field_name,actual_field_values
     actual_field_value = actual_field_values[0] 
     method_name = "has_#{field_name.classify.underscore}" 
     define_singleton_method(method_name) do |*input_value|
@@ -78,7 +78,7 @@ module ClassTemplate
     end
   end
 
-  def generate_method_to_alter_response_field field_name,actual_field_value
+  def ClassTemplate.generate_method_to_alter_response_field field_name,actual_field_value
     method_name = "has_#{field_name.underscore}"
     self.class.send(:define_method, method_name) do |*input_value|
       input_value = input_value[0]
@@ -89,7 +89,7 @@ module ClassTemplate
   end
 
 
-  def get_assignment_value actual_field_value,input_value
+  def ClassTemplate.get_assignment_value actual_field_value,input_value
     if  actual_field_value.class.to_s == "Hash" 
       input_value = {} if input_value.blank?
       actual_field_value.deep_merge(input_value) 
