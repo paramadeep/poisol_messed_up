@@ -19,7 +19,15 @@ class Parse
     hash_array.each do |hash|
       column_hash.each_key {|key| column_hash[key].append hash[key]}
     end
-    return column_hash
+    column_hash
+  end
+
+  def self.hash_to_concatenated_key_value hash
+    concatenated_body = ""
+    hash.each do |key,value|
+        concatenated_body = concatenated_body + "#{key}=#{value}&"
+    end
+    concatenated_body.chomp('&')
   end
 
 end

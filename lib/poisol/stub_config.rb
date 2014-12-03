@@ -2,8 +2,8 @@ class StubConfig
   attr_reader :response,:request
 
   def with_file file_name
-    @config_file = file_name
-    @config = Parse.yaml_file file_name
+    @config_yml_file = file_name
+    @config_yml = Parse.yaml_file file_name
     self
   end
 
@@ -26,9 +26,11 @@ class StubConfig
   private
   def build_request
     @request = Request.new
-    @request.url = @config["request"]["url"]
-    @request.type = @config["request"]["type"].intern
-    @request.query = @config["request"]["query"]
+    @request.url = @config_yml["request"]["url"]
+    @request.type = @config_yml["request"]["type"].intern
+    @request.query = @config_yml["request"]["query"]
+    include_explicit_only = @config_yml["request"]["include_explicit_only"]
+    @request.include_explicit_only = include_explicit_only.blank? ? false : include_explicit_only
     @request.body = @is_inline?  get_inline_request_body : get_exploaded_request_body
   end
 
@@ -39,29 +41,36 @@ class StubConfig
   end
 
   def handle_resonse_array_type
-    return if @config["response"].nil?
-    array_type = @config["response"]["array_type"]
+    return if @config_yml["response"].nil?
+    array_type = @config_yml["response"]["array_type"]
     @response.array_type = array_type.nil? ? "" : array_type
   end
 
 
   def get_inline_response_body
-    body = @config["response"]["body"]
+    body = @config_yml["response"]["body"]
     return (body.nil?) ? "": (Parse.json_to_hash body)
   end
 
   def get_inline_request_body
-    body = @config["request"]["body"]
-    return (body.nil?) ? "": (Parse.json_to_hash body)
+    body = @config_yml["request"]["body"]
+    if body.nil?
+      return ""
+    elsif body.class.name == "String"
+      return Parse.json_to_hash body
+    else
+      @request.is_body_key_value = true
+      return body
+    end
   end
 
   def get_exploaded_request_body
-    request_file = "#{File.dirname @config_file}/request.json"
+    request_file = "#{File.dirname @config_yml_file}/request.json"
     return (File.exists? request_file) ? Parse.json_file_to_hash(request_file) : ""
   end
 
   def get_exploaded_response_body
-    response_file = "#{File.dirname @config_file}/response.json"
+    response_file = "#{File.dirname @config_yml_file}/response.json"
     return (File.exists? response_file)? Parse.json_file_to_hash(response_file) : ""
   end
 
@@ -69,7 +78,7 @@ end
 
 
 class Request
-  attr_accessor :url,:type,:query,:body
+  attr_accessor :url,:type,:query,:body,:is_body_key_value,:include_explicit_only
 end
 
 class Response 

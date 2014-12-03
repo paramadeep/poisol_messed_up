@@ -1,0 +1,9 @@
+request:
+  url: explicit
+  type: post
+  include_explicit_only: true
+  body:
+    name: "sea"
+    age: 10
+response:
+  body: '{"hi": 1}'
