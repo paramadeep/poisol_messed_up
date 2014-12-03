@@ -1,0 +1,5 @@
+request:
+  url: 'cd/{name|midnight}/{actor|ragavan}/get'
+  type: get
+response:
+  body: '{"hi": 1}'

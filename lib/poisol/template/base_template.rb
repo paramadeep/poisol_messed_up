@@ -14,7 +14,7 @@ module ClassTemplate
   end
 
   def prepare_request_url
-    @url = @config.request.url
+    generate_methods_to_alter_path_params
     @type = @config.request.type
   end
 

@@ -57,7 +57,6 @@ The following can be dynamically configured
 |with|response body array item field|
 
 ##ToDo
-* URL config 
 * Response code and header config
 * Functional test for query params
 * Refactor Response Handler 
