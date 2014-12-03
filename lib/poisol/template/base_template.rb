@@ -27,6 +27,7 @@ module ClassTemplate
   end
 
   def build
+    remove_path_param_name_from_url
     stub = stub_request(@type, "http://#{Domain.base_url}/#{@url}")
     stub.with(:query => @query) unless @query.eql? ""
     stub.with(:body => @request_body) unless @request_body.eql? ""
