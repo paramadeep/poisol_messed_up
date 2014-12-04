@@ -57,6 +57,13 @@ module ClassTemplate
     end
   end
 
+  def set_dumb_response response_file
+      @response_body = Parse.json_file_to_hash(response_file)
+      @config.response.is_column_array = false
+      @config.response.is_row_array = false
+      self
+  end
+
   def generate_method_to_alter_response_field_array field_name,actual_field_values
     actual_field_value = actual_field_values[0] 
     method_name = "has_#{field_name.classify.underscore}" 
