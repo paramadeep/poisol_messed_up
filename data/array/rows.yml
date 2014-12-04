@@ -2,7 +2,7 @@ request:
   url: row
   type: get
 response:
-  array_type: "row_array"
+  array_type: row 
   body:  '{
     "title": "independance",
     "category": {

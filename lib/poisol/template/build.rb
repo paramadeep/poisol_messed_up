@@ -22,9 +22,7 @@ module ClassTemplate
   end
 
   def build_response_body
-    if @config.response.array_type == "column_array"
-      @response_body = Parse.hash_array_to_column_hash(@response_body)
-    end
+    @response_body = Parse.hash_array_to_column_hash(@response_body) if @config.response.is_column_array
     @stub.to_return(:status => 200, :body => @response_body.to_s, :headers => {})
   end
 end

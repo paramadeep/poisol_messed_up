@@ -41,9 +41,11 @@ class StubConfig
   end
 
   def handle_resonse_array_type
-    return if @config_yml["response"].nil?
+    return if @config_yml["response"].blank?
     array_type = @config_yml["response"]["array_type"]
-    @response.array_type = array_type.nil? ? "" : array_type
+    return if array_type.blank?
+    @response.is_column_array = true  if array_type.eql? "column"
+    @response.is_row_array = true  if array_type.eql? "row"
   end
 
 
@@ -82,6 +84,6 @@ class Request
 end
 
 class Response 
-  attr_accessor :body,:array_type,:is_column_array,:is_row_array
+  attr_accessor :body,:is_column_array,:is_row_array
 end
 

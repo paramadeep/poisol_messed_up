@@ -2,7 +2,11 @@ module ClassTemplate
 
   def prepare_response
     return if @config.response.body.blank?
-    @config.response.array_type.blank? ? generate_methods_to_alter_response_object : generate_methods_to_alter_response_array
+    if  @config.response.is_column_array or @config.response.is_row_array 
+      generate_methods_to_alter_response_array
+    else
+      generate_methods_to_alter_response_object 
+    end
   end
 
   def generate_methods_to_alter_response_array
