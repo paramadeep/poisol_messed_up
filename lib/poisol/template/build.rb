@@ -8,7 +8,7 @@ module ClassTemplate
 
   def build_url
     remove_path_param_name_from_url
-    @stub = stub_request(@type, "http://#{Domain.base_url}/#{@url}")
+    @stub = stub_request(@type, "http://#{@config.request.domain}/#{@url}")
   end
 
   def build_query
@@ -23,7 +23,7 @@ module ClassTemplate
 
   def build_response_body
     @response_body = Parse.hash_array_to_column_hash(@response_body) if @config.response.is_column_array
-    @stub.to_return(:status => 200, :body => @response_body.to_s, :headers => {})
+    @stub.to_return(:status => 200, :body => @response_body.to_json, :headers => {'Content-Type' => 'application/json'})
   end
 end
 

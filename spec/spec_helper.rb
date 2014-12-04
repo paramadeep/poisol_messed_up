@@ -21,7 +21,9 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     WebMock.disable_net_connect!(:allow_localhost => true)
-    factory = StubFactory.new.build("data")
+    factory = StubFactory.new.build("spec/data/main")
+    factory = StubFactory.new.build("spec/data/domain/first/")
+    factory = StubFactory.new.build("spec/data/domain/second/")
   end
 
 end

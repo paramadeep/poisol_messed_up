@@ -7,6 +7,11 @@ class StubConfig
     self
   end
 
+  def with_domain domain
+    @domain = domain
+    self
+  end
+
   def is_inline
     @is_inline = true
     self
@@ -26,6 +31,7 @@ class StubConfig
   private
   def build_request
     @request = Request.new
+    @request.domain=@domain.clone
     @request.url = @config_yml["request"]["url"]
     @request.type = @config_yml["request"]["type"].intern
     @request.query = @config_yml["request"]["query"]
@@ -80,7 +86,7 @@ end
 
 
 class Request
-  attr_accessor :url,:type,:query,:body,:is_body_key_value,:include_explicit_only
+  attr_accessor :domain,:url,:type,:query,:body,:is_body_key_value,:include_explicit_only
 end
 
 class Response 

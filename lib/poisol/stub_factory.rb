@@ -4,7 +4,7 @@ class StubFactory
     domain_config = Dir["#{folder}/domain.yml"].first
     explolded_configs =  Dir["#{folder}/**/config.yml"]
     inline_configs = Dir["#{folder}/**/*.yml"] - ( (explolded_configs.nil?) ?  [] : explolded_configs) - [domain_config]
-    Domain.load domain_config
+    @domain = Domain.new.load domain_config
     generate_exploded_config explolded_configs unless explolded_configs.nil?
     generate_inline_config inline_configs unless inline_configs.nil?
   end
@@ -15,7 +15,7 @@ class StubFactory
   def generate_exploded_config explolded_configs
     explolded_configs.each do |config_file|
       dynamic_name = FileUtil.titilze_parent_dir config_file
-      config = StubConfig.new.is_exploded.with_file(config_file).build
+      config = StubConfig.new.is_exploded.with_file(config_file).with_domain(@domain).build
       create_class dynamic_name,config
     end
   end
@@ -23,7 +23,7 @@ class StubFactory
   def generate_inline_config inline_configs
     inline_configs.each do |config_file|
       dynamic_name = FileUtil.titilze_file_name config_file
-      config = StubConfig.new.is_inline.with_file(config_file).build
+      config = StubConfig.new.is_inline.with_file(config_file).with_domain(@domain).build
       create_class dynamic_name,config
     end
   end

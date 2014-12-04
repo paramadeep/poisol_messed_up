@@ -1,6 +1,8 @@
 module ClassTemplate
   def generate_methods_to_alter_path_params
     @url = @config.request.url.clone
+    @url.strip!
+    @url.sub!("/","") if @url[0].eql? "/"
     @url.scan(/{(.+?)}/).each do |path_params| 
       path_param = path_params[0]
       param_name = path_param.split("|")[0]
@@ -13,7 +15,6 @@ module ClassTemplate
       end
     end
   end
-
 
   def remove_path_param_name_from_url
     @url.scan(/{(.+?)}/).each do |path_params|
