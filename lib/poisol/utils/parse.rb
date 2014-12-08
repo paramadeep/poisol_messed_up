@@ -1,18 +1,19 @@
-class Parse
+module Parse
+  extend self
 
-  def self.json_file_to_hash file_name
+  def json_file_to_hash file_name
     JSON.parse File.read(file_name)
   end 
 
-  def self.yaml_file file_name
+  def yaml_file file_name
     YAML.load_file(file_name)
   end
 
-  def self.json_to_hash json
+  def json_to_hash json
     JSON.parse json
   end
 
-  def self.hash_array_to_column_hash hash_array
+  def hash_array_to_column_hash hash_array
     return [] if hash_array.blank?
     column_hash = Hash.new
     hash_array[0].each_key { |key| column_hash.merge!(key=>[])}
@@ -22,13 +23,12 @@ class Parse
     column_hash
   end
 
-  def self.hash_to_concatenated_key_value hash
+  def hash_to_concatenated_key_value hash
     concatenated_body = ""
     hash.each do |key,value|
-        concatenated_body = concatenated_body + "#{key}=#{value}&"
+      concatenated_body = concatenated_body + "#{key}=#{value}&"
     end
     concatenated_body.chomp('&')
   end
 
 end
-
