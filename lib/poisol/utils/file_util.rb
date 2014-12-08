@@ -1,18 +1,12 @@
-module FileUtil
+module FileName
   extend self
 
-  def titilze_parent_dir file_name
-    titilize File.basename(File.dirname file_name)
+  def get_dir_name file_name
+    File.basename(File.dirname file_name)
   end
 
-  def titilze_file_name file_name
-    titilize ((File.basename file_name).chomp ".yml")
-  end
-
-  private 
-
-  def titilize input
-    (input).capitalize.split('_').reduce{|c,a| c+a.capitalize}
+  def get_file_name file_name
+    ((File.basename file_name).chomp ".yml")
   end
 
 end

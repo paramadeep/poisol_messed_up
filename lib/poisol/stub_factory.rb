@@ -14,7 +14,7 @@ class StubFactory
 
   def generate_exploded_config explolded_configs
     explolded_configs.each do |config_file|
-      dynamic_name = FileUtil.titilze_parent_dir config_file
+      dynamic_name = (FileName.get_dir_name config_file).camelize
       config = StubConfigBuilder.new.is_exploded.with_file(config_file).with_domain(@domain).build
       create_class dynamic_name,config
     end
@@ -22,7 +22,7 @@ class StubFactory
 
   def generate_inline_config inline_configs
     inline_configs.each do |config_file|
-      dynamic_name = FileUtil.titilze_file_name config_file
+      dynamic_name = (FileName.get_file_name config_file).camelize
       config = StubConfigBuilder.new.is_inline.with_file(config_file).with_domain(@domain).build
       create_class dynamic_name,config
     end
