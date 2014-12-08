@@ -1,9 +1,12 @@
 class Domain
-  def load domain_config
+  attr_reader :file,:full_url
+
+  def initialize domain_config_file
+    @file = domain_config
     base_hash = Parse.yaml_file domain_config
     domain  = base_hash["domain"]
     port = base_hash["port"]
-    "#{domain.chomp('\\')}#{ port.present? ? ":#{port}" : "" }"
+    @full_url = "#{domain.chomp('\\')}#{ port.present? ? ":#{port}" : "" }"
   end
 
 end
