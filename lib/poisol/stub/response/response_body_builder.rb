@@ -1,8 +1,8 @@
-module ClassTemplate
+module ResponseBodyBuilder
 
   def prepare_response
-    return if @config.response.body.blank?
-    if  @config.response.is_column_array or @config.response.is_row_array 
+    return if @stub_config.response.body.blank?
+    if  @stub_config.response.is_column_array or @stub_config.response.is_row_array 
       generate_methods_to_alter_response_array
     else
       generate_methods_to_alter_response_object 
@@ -10,41 +10,39 @@ module ClassTemplate
   end
 
   def generate_methods_to_alter_response_array
-    @response_body_object = @config.response.body
-    @response_body = []
+    @response_array_item = @stub_config.response.body
     generate_method_to_append_response_array
     generate_method_to_alter_response_array_object
   end
 
   def generate_method_to_alter_response_array_object
-    @response_body_object.each do |field|
+    @response_array_item.each do |field|
       field_name = field[0]
       actual_field_value = field[1]
       is_array = (actual_field_value.class.to_s == "Array")
       actual_field_value = actual_field_value[0] if is_array
-      @response_body.last[field_name] = [] if is_array
       method_name = is_array ? ("with_#{field_name.classify.underscore}") : ("with_#{field_name.underscore}")
-      define_singleton_method(method_name) do |*input_value|
+      define_method(method_name) do |*input_value|
         input_value = input_value[0]
         assignment_value = get_assignment_value actual_field_value,input_value
-        @response_body.last[field_name] = is_array ? (@response_body.last[field_name] << assignment_value) :  assignment_value
+        @response.body.last[field_name] = is_array ? (@response.body.last[field_name] << assignment_value) :  assignment_value
         self
       end
     end
   end
 
   def generate_method_to_append_response_array
-    object_name = self.class.to_s.classify.underscore
-    method_name = "has_#{object_name}"
-    define_singleton_method(method_name) do
-      @response_body << @response_body_object.deep_dup
+    class_name = self.name.classify.underscore
+    method_name = "has_#{class_name}"
+    define_method(method_name) do
+      @response.body << stub_config.response.body.deep_dup
       self
     end
   end
 
   def generate_methods_to_alter_response_object
-    @response_body = @config.response.body.clone
-    @response_body.each do |field|
+    response_body = @stub_config.response.body.clone
+    response_body.each do |field|
       field_name = field[0]
       actual_field_value = field[1]
       is_array = (actual_field_value.class.to_s == "Array")
@@ -57,56 +55,40 @@ module ClassTemplate
     end
   end
 
-  def set_dumb_response response_file
-      @response_body = Parse.json_file_to_hash(response_file)
-      @config.response.is_column_array = false
-      @config.response.is_row_array = false
-      self
-  end
-
   def generate_method_to_alter_response_field_array field_name,actual_field_values
     actual_field_value = actual_field_values[0] 
     method_name = "has_#{field_name.classify.underscore}" 
-    define_singleton_method(method_name) do |*input_value|
+    define_method(method_name) do |*input_value|
       input_value = input_value[0]
       assignment_value = get_assignment_value actual_field_value,input_value
-      @response_body[field_name] =  [assignment_value]
+      @response.body[field_name] =  [assignment_value]
       self
     end
 
     method_name = "has_another_#{field_name.classify.underscore}" 
-    define_singleton_method(method_name) do |*input_value|
+    define_method(method_name) do |*input_value|
       input_value = input_value[0]
       assignment_value = get_assignment_value actual_field_value,input_value
-      @response_body[field_name] =  @response_body[field_name] << assignment_value 
+      @response.body[field_name] =  @response.body[field_name] << assignment_value 
       self
     end
 
     method_name = "has_no_#{field_name.classify.underscore}" 
-    define_singleton_method(method_name) do 
-      @response_body[field_name] = [] 
+    define_method(method_name) do 
+      @response.body[field_name] = [] 
       self
     end
   end
 
   def generate_method_to_alter_response_field field_name,actual_field_value
     method_name = "has_#{field_name.underscore}"
-    self.class.send(:define_method, method_name) do |*input_value|
+    define_method(method_name) do |*input_value|
       input_value = input_value[0]
       assignment_value = get_assignment_value actual_field_value,input_value
-      @response_body[field_name] = assignment_value
+      @response.body[field_name] = assignment_value
       self
     end
   end
 
 
-  def get_assignment_value actual_field_value,input_value
-    if  actual_field_value.class.to_s == "Hash" 
-      input_value = {} if input_value.blank?
-      actual_field_value.deep_merge(input_value) 
-    else
-      input_value
-    end
-  end
-
-end
+ end

@@ -1,3 +1,5 @@
+require_relative "stub/stub"
+
 class StubFactory
   def build folder
     @folder = folder.chomp '/'
@@ -31,14 +33,15 @@ class StubFactory
   def generate_inline_config inline_configs
     inline_configs.each do |config_file|
       dynamic_name = (FileName.get_file_name config_file).camelize
-      config = StubConfigBuilder.new.is_inline.with_file(config_file).with_domain(@domain.full_url).build
-      create_class dynamic_name,config
+      stub_config = StubConfigBuilder.new.is_inline.with_file(config_file).with_domain(@domain.full_url).build
+      create_class dynamic_name,stub_config
     end
   end
 
-  def create_class class_name,config
-    ConfigMap.add class_name => config
-    Object.const_set class_name,Class.new {include ClassTemplate}
+  def create_class class_name,stub_config
+    dynamic_stub_class = Object.const_set class_name,Class.new(Stub)
+    dynamic_stub_class.set_stub_config stub_config
+    dynamic_stub_class.generate_methods_to_alter_sutb
   end
 
 end

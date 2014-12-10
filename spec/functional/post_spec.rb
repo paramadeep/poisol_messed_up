@@ -1,4 +1,4 @@
-describe ClassTemplate, "#post_user" do
+describe Stub, "#post_user" do
 
   it "default request and response" do
     User.new.build()

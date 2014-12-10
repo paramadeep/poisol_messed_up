@@ -1,4 +1,4 @@
-describe ClassTemplate, "#key_value" do
+describe Stub, "#key_value" do
 
   it "default request" do
     KeyValue.new.build()

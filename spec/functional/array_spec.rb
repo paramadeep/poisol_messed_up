@@ -1,4 +1,4 @@
-describe ClassTemplate, "#array" do
+describe Stub, "#array" do
 
   it "empty column array" do
     Columns.new.build

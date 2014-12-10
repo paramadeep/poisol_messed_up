@@ -35,11 +35,18 @@ class StubConfigBuilder
 
   private
   def build_request
-    @stub_config.request.url = @raw_config_hash["request"]["url"]
+    load_url
     @stub_config.request.type = @raw_config_hash["request"]["type"].intern
     @stub_config.request.query = @raw_config_hash["request"]["query"]
     load_request_body_filed_implicit_option
     @stub_config.is_inline ? load_inline_request_body : load_exploaded_request_body
+  end
+
+  def load_url
+    url = @raw_config_hash["request"]["url"]
+    url.strip!
+    url.sub!("/","") if url[0].eql? "/"
+    @stub_config.request.url = url
   end
 
   def load_request_body_filed_implicit_option

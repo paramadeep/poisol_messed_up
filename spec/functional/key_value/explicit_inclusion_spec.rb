@@ -1,4 +1,4 @@
-describe ClassTemplate, "#key_value" do
+describe Stub, "#key_value" do
 
   it "partial dynamic request" do
     Explicit.new.by_name("ram").build()

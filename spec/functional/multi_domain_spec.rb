@@ -1,4 +1,4 @@
-describe ClassTemplate, "#multi domain" do
+describe Stub, "#multi domain" do
 
   it "support multi domain" do
     First.new.build

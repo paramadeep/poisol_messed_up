@@ -1,4 +1,4 @@
-describe ClassTemplate, "#url" do
+describe Stub, "#url" do
 
   it "default" do
     Url.new.build()
