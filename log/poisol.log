@@ -1,0 +1,21 @@
+# Logfile created on 2014-12-11 08:22:10 +0530 by logger.rb/v1.2.7
+Real HTTP connections are disabled. Unregistered request: GET http://localhost:89675/blabl with body 'hi'
+
+You can stub this request with the following snippet:
+
+stub_request(:get, "http://localhost:89675/blabl").
+  with(:body => "hi").
+  to_return(:status => 200, :body => "", :headers => {})
+
+============================================================
+
+Real HTTP connections are disabled. Unregistered request: GET http://localhost:89675/blabl with body 'hi'
+
+You can stub this request with the following snippet:
+
+stub_request(:get, "http://localhost:89675/blabl").
+  with(:body => "hi").
+  to_return(:status => 200, :body => "", :headers => {})
+
+============================================================
+

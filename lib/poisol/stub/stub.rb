@@ -4,9 +4,6 @@ require_relative "stub_class_builder"
 class Stub
   include WebMockStubBuilder
   attr_accessor :request,:response
-  @request_array_item
-  @response_array_item
-  @stub_config
   class << self
     include StubClassBuilder
 
