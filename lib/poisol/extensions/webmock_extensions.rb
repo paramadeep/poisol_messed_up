@@ -3,9 +3,9 @@ module WebMock
     alias real_init initialize
     def initialize(*args)
       exception = real_init *args
-      PoisolLog.error exception.message
+      request = args[0]
+      PoisolLog.error "**************Failed************\n#{request.method}:#{request.uri}\n#{request.body if request.body.present?}"
       exception
     end
   end
-
 end

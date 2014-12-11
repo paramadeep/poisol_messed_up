@@ -3,7 +3,7 @@ class PoisolLog
 
     def logger
       FileUtils.mkdir_p "log" unless File.exists?("log")
-      @poisol_logger ||= Logger.new("log/poisol.log")
+      @poisol_logger ||= Logger.new("log/poisol_stub.log")
       @poisol_logger.formatter = proc { |severity, datetime, progname, msg| "#{msg}\n" }
       @poisol_logger.level = Logger::INFO
       @poisol_logger
