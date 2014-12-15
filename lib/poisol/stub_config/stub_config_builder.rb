@@ -37,10 +37,22 @@ class StubConfigBuilder
   def build_request
     load_url
     @stub_config.request.type = @raw_config_hash["request"]["type"].intern
-    @stub_config.request.query = @raw_config_hash["request"]["query"]
+    load_query
+    load_request_body
+  end
+  
+  def load_request_body
     load_request_body_filed_implicit_option
     @stub_config.is_inline ? load_inline_request_body : load_exploaded_request_body
   end
+
+
+  def load_query
+    @stub_config.request.query = @raw_config_hash["request"]["query"]
+    query_explicit = @raw_config_hash["request"]["query_explicit"]
+    @stub_config.request.query_explicit = query_explicit.blank? ? false : query_explicit
+  end
+
 
   def load_url
     url = @raw_config_hash["request"]["url"]
@@ -50,8 +62,8 @@ class StubConfigBuilder
   end
 
   def load_request_body_filed_implicit_option
-    include_explicit_only = @raw_config_hash["request"]["include_explicit_only"]
-    @stub_config.request.include_explicit_only = include_explicit_only.blank? ? false : include_explicit_only
+    body_explicit = @raw_config_hash["request"]["body_explicit"]
+    @stub_config.request.body_explicit = body_explicit.blank? ? false : body_explicit
   end
 
 

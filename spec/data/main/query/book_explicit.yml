@@ -1,8 +1,10 @@
 request:
-  url: book
+  url: book_explicit
   type: get
+  query_explicit: true
   query:
     author: "bharathi"
+    name: "doni"
 response:
   body:  '{
     "title": "independance",

@@ -1,7 +1,7 @@
 request:
   url: explicit
   type: post
-  include_explicit_only: true
+  body_explicit: true
   body:
     name: "sea"
     age: 10

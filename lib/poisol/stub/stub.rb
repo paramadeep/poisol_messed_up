@@ -20,8 +20,9 @@ class Stub
     @response = Response.new
     @request.url = stub_config.request.url.deep_dup
     @request.query = stub_config.request.query.deep_dup
+    @request.query = {} if stub_config.request.query_explicit
     @request.body = stub_config.request.body.deep_dup
-    @request.body = {} if stub_config.request.include_explicit_only
+    @request.body = {} if stub_config.request.body_explicit
     if stub_config.response.is_column_array or stub_config.response.is_row_array 
       @response.body = []
     else
