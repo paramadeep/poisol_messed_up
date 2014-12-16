@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    poisol (0.0.11)
+    poisol (0.0.12)
 
 GEM
   remote: http://rubygems.org/
