@@ -12,4 +12,10 @@ describe Stub, "#query_explicit" do
     expect(response.body).to eq({"title"=>"independance", "category"=>{"age_group"=>"10", "genre"=>"action", "publisher"=>{"name"=>"summa", "place"=>"erode"}}}.to_json)
   end
 
+  it "full dymamic inline" do
+    Book.new.for(:author => 'asd',:name =>'don').build()
+    response = RestClient.get "http://localhost:80/book",{:params => {:author=>'asd',:name=>'don'}}
+    expect(response.body).to eq({"title"=>"independance", "category"=>{"age_group"=>"10", "genre"=>"action", "publisher"=>{"name"=>"summa", "place"=>"erode"}}}.to_json)
+  end
+
 end

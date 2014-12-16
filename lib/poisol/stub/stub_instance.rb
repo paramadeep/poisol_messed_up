@@ -30,11 +30,13 @@ module StubInstance
   end
 
   def has input_hash
-    @response.body.deep_merge input_hash
+    @response.body.deep_merge! input_hash
+    self
   end
 
   def  for input_hash
-    @request.query.deep_merge input_hash
+    @request.query.deep_merge! input_hash
+    self
   end
 
 end

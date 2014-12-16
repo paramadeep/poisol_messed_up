@@ -34,8 +34,13 @@ module ResponseBodyBuilder
   def generate_method_to_append_response_array
     class_name = self.name.classify.underscore
     method_name = "has_#{class_name}"
-    define_method(method_name) do
-      @response.body << stub_config.response.body.deep_dup
+    define_method(method_name) do |*input_value|
+      if input_value.blank?
+        @response.body << stub_config.response.body.deep_dup 
+      else
+        input = JSON.parse(input_value[0].to_json)
+        @response.body << (stub_config.response.body.deep_dup).deep_merge!(input)
+      end
       self
     end
   end
@@ -91,4 +96,4 @@ module ResponseBodyBuilder
   end
 
 
- end
+end
