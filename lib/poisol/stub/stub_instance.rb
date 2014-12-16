@@ -1,17 +1,24 @@
 module StubInstance
   def initialize
+    init_request
+    init_response
+  end
+
+  def init_request
     @request = Request.new
-    @response = Response.new
     @request.url = stub_config.request.url.deep_dup
-    @request.query = stub_config.request.query.deep_dup
-    @request.query = {} if stub_config.request.query_explicit
-    @request.body = stub_config.request.body.deep_dup
-    @request.body = {} if stub_config.request.body_explicit
+    @request.query = stub_config.request.query_explicit ? {} : stub_config.request.query.deep_dup
+    @request.body = stub_config.request.body_explicit ? {} : stub_config.request.body.deep_dup
+  end
+
+  def init_response
+    @response = Response.new
     if stub_config.response.is_column_array or stub_config.response.is_row_array 
       @response.body = []
     else
       @response.body = stub_config.response.body.deep_dup
     end
+    @response.status = 200
   end
 
   def set_dumb_response response_file
@@ -36,6 +43,11 @@ module StubInstance
 
   def  for input_hash
     @request.query.deep_merge! input_hash
+    self
+  end
+
+  def  status input
+    @response.status = input
     self
   end
 

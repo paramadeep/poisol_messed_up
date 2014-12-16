@@ -29,7 +29,8 @@ module StubClassBuilder
     generate_query_methods if @stub_config.request.query.present?
   end
 
-  def prepare_request_body
-    generate_request_methods if @stub_config.request.body.present?
+  def prepare_response
+    prepare_response_body
   end
+
 end

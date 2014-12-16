@@ -25,7 +25,7 @@ module WebMockStubBuilder
 
   def build_response_body
     @response.body = Parse.hash_array_to_column_hash(@response.body) if stub_config.response.is_column_array and !@is_response_dumped.present?
-    @webmock_stub.to_return(:status => 200, :body => @response.body.to_json, :headers => {'Content-Type' => 'application/json'})
+    @webmock_stub.to_return(:status => @response.status, :body => @response.body.to_json, :headers => {'Content-Type' => 'application/json'})
   end
 
   def remove_path_param_name_from_url

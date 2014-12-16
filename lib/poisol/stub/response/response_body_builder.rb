@@ -1,6 +1,6 @@
 module ResponseBodyBuilder
 
-  def prepare_response
+  def prepare_response_body
     return if @stub_config.response.body.blank?
     if  @stub_config.response.is_column_array or @stub_config.response.is_row_array 
       generate_methods_to_alter_response_array
