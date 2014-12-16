@@ -50,7 +50,8 @@ The following can be dynamically configured
 
 |Preposition| for defining|
 |----:|:----|
-|for|url & query params |
+|of|url |
+|for|query params |
 |by|request body filed/array item|
 |having|request body array item field|
 |has|response body field/array item|
