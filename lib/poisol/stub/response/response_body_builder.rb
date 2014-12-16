@@ -39,7 +39,7 @@ module ResponseBodyBuilder
         @response.body << stub_config.response.body.deep_dup 
       else
         input = JSON.parse(input_value[0].to_json)
-        @response.body << (stub_config.response.body.deep_dup).deep_merge!(input)
+        @response.body << (stub_config.response.body.deep_dup).deep_merge!(input_value[0].camelize_keys)
       end
       self
     end

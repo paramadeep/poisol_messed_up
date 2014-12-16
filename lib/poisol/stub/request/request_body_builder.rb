@@ -38,8 +38,7 @@ module RequestBodyBuilder
       if input_value.blank?
         @request.body << stub_config.request.body.deep_dup 
       else
-        input = JSON.parse(input_value[0].to_json)
-        @request.body << (stub_config.request.body.deep_dup).deep_merge!(input)
+        @request.body << (stub_config.request.body.deep_dup).deep_merge!(input_value[0].camelize_keys)
       end
       self
     end
