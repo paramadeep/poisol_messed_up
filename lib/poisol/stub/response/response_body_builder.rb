@@ -12,6 +12,7 @@ module ResponseBodyBuilder
   def generate_methods_to_alter_response_array
     @response_array_item = @stub_config.response.body
     generate_method_to_append_response_array
+    generate_method_to_append_response_array_as_hash_params
     generate_method_to_alter_response_array_object
   end
 
@@ -45,6 +46,19 @@ module ResponseBodyBuilder
     end
   end
 
+  def generate_method_to_append_response_array_as_hash_params
+    class_name = self.name.underscore
+    method_name = "has_#{class_name}"
+    define_method(method_name) do |*input_value|
+      input_hashes = input_value[0]
+      input_hashes.each do |input_hash|
+        @response.body << (stub_config.response.body.deep_dup).deep_merge!(input_hash.camelize_keys)
+      end
+      self
+    end
+  end
+
+
   def generate_methods_to_alter_response_object
     response_body = @stub_config.response.body.clone
     response_body.each do |field|
@@ -56,7 +70,6 @@ module ResponseBodyBuilder
       else 
         generate_method_to_alter_response_field field_name,actual_field_value
       end
-
     end
   end
 
