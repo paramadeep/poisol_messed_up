@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=sql
+Exec=sudo /opt/sqldeveloper/sqldeveloper.sh
+Type=Application
+Icon=/home/d/.local/share/applications/apps/sql.ico

@@ -35,7 +35,7 @@ alias gl='git log '
 #for pam
 alias pamin='echo yes | cagvpn --login --username deepak --password July2011'
 alias pamout='cagvpn --logout'
-export RAILS_ENV=stub
+export RAILS_ENV=poisol
 alias prodb="echo 'psql -U admin -h 172.16.20.210 -d promotion_qa -p 5446';sshpass -p S6djbI2w  ssh root@172.16.20.242"
 alias mpdb="echo 'psql -U admin -h 172.16.20.210 -d  merchandise_platform_qa -p 5435'; sshpass -p S6djbI2w  ssh root@172.16.20.242"
 alias proapp="echo 'tail -1000fn /data/promotion_app/current/log/italy_qa.log';sshpass -p S6djbI2w  ssh root@172.16.20.242"
@@ -50,4 +50,12 @@ export EDITOR=/usr/bin/vim
 #ftp
 alias ftps='python -m SimpleHTTPServer 8000'
 
-export PATH=$PATH:/home/d/work/nagal/git-plus:/home/d/work/apps/node/bin:$JAVA_HOME/jre/bin/:$JAVA_HOME/bin/:/home/d/work/apps/gradle-2.0/bin:/home/d/work/apps/sdk_adt/tools:/home/d/work/apps/sdk_adt/platform-tools/:/home/d/work/apps/play-2.0:/home/d/work/apps/scala-2.11.2/bin/
+export PATH=$PATH:/home/d/work/nagal/git-plus
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/home/d/work/app/node/bin/:$PATH"
+export PATH="/home/d/work/app/btsync/:$PATH"
+eval "$(rbenv init -)"
+
+#bundle config jobs 7
+#sed -i -e 's/x/y/g' *.txt

@@ -15,6 +15,7 @@ Plugin 'tpope/vim-rake'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'scrooloose/nerdtree'
+Plugin 'skalnik/vim-vroom'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'digitaltoad/vim-jade'
@@ -24,6 +25,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'docunext/closetag.vim'
 Plugin 'Raimondi/delimitMate'
+Plugin 'paramadeep/Conque'
 call vundle#end()
 
 filetype plugin indent on
@@ -41,9 +43,9 @@ set wildmode=full
 set laststatus=2 "always display status
 highlight LineNr ctermbg=black
 
-map ft :w<CR>:call RunCurrentSpecFile()<CR>
-map fs :w<CR>:call RunNearestSpec()<CR>
-map fp :w<CR>:call RunLastSpec()<CR>
+map ft :w<CR>:VroomRunTestFile<CR>
+map fs :w<CR>:VroomRunNearestTest<CR>
+map fp :w<CR>:VroomRunLastTest<CR>
 map fa :w<CR>:call RunAllSpecs()<CR>
 
 let mapleader = ","
@@ -53,6 +55,7 @@ nmap <leader>q :q<cr>
 nmap <leader>e :e<space>
 nmap <leader>1 :!<space>
 nmap <leader>s :%s///g
+nmap <leader>r :!ag -r -l  *\| xargs sed -i -e 's///g'
 nmap <leader>f gg=G:w<cr><c-o><c-o>
 nmap <leader>x :set invnumber<cr>
 nmap <leader>z :NERDTreeToggle<cr>
@@ -70,6 +73,10 @@ nmap fh :wincmd h<CR>
 nmap fl :wincmd l<CR>
 
 nmap <silent> <c-e> :CtrlPMRU <CR>
+
+"vroom
+let g:vroom_map_keys = 0
+let g:vroom_cucumber_path = "cucumber"
 
 "spelling
 :set spell
@@ -89,3 +96,5 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint
 "au FileType xml exe html svg ":silent %!xmllint --format --recover - 2>/dev/null"
 
+"disable vroom default key map
+let g:vroom_map_keys = 0
