@@ -40,7 +40,7 @@ module ResponseBodyBuilder
         @response.body << stub_config.response.body.deep_dup 
       else
         input = JSON.parse(input_value[0].to_json)
-        @response.body << (stub_config.response.body.deep_dup).deep_merge!(input_value[0].camelize_keys)
+        @response.body << (stub_config.response.body.deep_dup).deep_merge!(input_value[0].stringify_keys)
       end
       self
     end
@@ -52,7 +52,7 @@ module ResponseBodyBuilder
     define_method(method_name) do |*input_value|
       input_hashes = input_value[0]
       input_hashes.each do |input_hash|
-        @response.body << (stub_config.response.body.deep_dup).deep_merge!(input_hash.camelize_keys)
+        @response.body << (stub_config.response.body.deep_dup).deep_merge!(input_hash.stringify_keys)
       end
       self
     end

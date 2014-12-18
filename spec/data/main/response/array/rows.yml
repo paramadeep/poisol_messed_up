@@ -6,6 +6,6 @@ response:
   body:  '{
     "title": "independance",
     "category": {
-      "ageGroup": "10"
+      "age_group": "10"
     }
   }'

@@ -40,7 +40,7 @@ module RequestBodyBuilder
         @request.body << stub_config.request.body.deep_dup 
       else
         input = JSON.parse(input_value[0].to_json)
-        @request.body << (stub_config.request.body.deep_dup).deep_merge!(input_value[0].camelize_keys)
+        @request.body << (stub_config.request.body.deep_dup).deep_merge!(input_value[0].stringify_keys)
       end
       self
     end
@@ -52,7 +52,7 @@ module RequestBodyBuilder
     define_method(method_name) do |*input_value|
       input_hashes = input_value[0]
       input_hashes.each do |input_hash|
-        @request.body << (stub_config.request.body.deep_dup).deep_merge!(input_hash.camelize_keys)
+        @request.body << (stub_config.request.body.deep_dup).deep_merge!(input_hash.stringify_keys)
       end
       self
     end
